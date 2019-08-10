@@ -63,4 +63,8 @@ dependencies {
 
     implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
     implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
+
+    //Rounded Image
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }
