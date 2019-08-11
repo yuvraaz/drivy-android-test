@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Drivy</string>
+    <string name="symbol">%1$s %2$s</string>
+
 </resources>

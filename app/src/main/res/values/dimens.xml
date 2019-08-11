@@ -7,4 +7,6 @@
     <dimen name="image_border_width">2dip</dimen>
     <dimen name="corner_radious">10dip</dimen>
     <dimen name="text_size_model">17dp</dimen>
+    <dimen name="text_size_review_count">13dp</dimen>
+    <dimen name="text_size_price_detail">30dp</dimen>
 </resources>

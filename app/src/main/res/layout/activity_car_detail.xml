@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".feature.detail.CarDetailActivity"
+        xmlns:tools="http://schemas.android.com/tools">
+
+   <data>
+
+       <variable
+              name="cardetail"
+              type="fr.youbaraj.drivy_android.feature.list.model.CarsDAO"/>
+   </data>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/gl_left_ver"
+                                                    android:orientation="vertical"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    android:layout_marginStart="16dp"
+                                                    app:layout_constraintGuide_end="384dp"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/gl_right_ver"
+                                                    app:layout_constraintGuide_begin="380dp"
+                                                    android:orientation="vertical" android:layout_marginEnd="16dp"
+                                                    app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/car_dummy"
+                android:id="@+id/iv_car_picture"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{cardetail.pictureurl}"
+
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <Button
+                android:text="Book Now"
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:id="@+id/btn_book_now"
+                android:textAllCaps="false"
+                android:background="@color/colorBlueDark" android:textColor="@color/colorWhiteBorder"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right_ver"
+                app:layout_constraintStart_toStartOf="@+id/gl_left_ver" app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/cardView2"/>
+        <TextView
+                android:text="@{cardetail.brand}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_car_brand" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_car_picture"
+                app:layout_constraintStart_toStartOf="@+id/gl_left_ver" android:textSize="@dimen/text_size_title"
+                android:textColor="@color/colorBlueDark"/>
+        <TextView
+                android:text="@{cardetail.model}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_car_model"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_car_brand" android:textSize="@dimen/text_size_title"
+                android:textColor="@color/colorBlueDark" app:layout_constraintStart_toEndOf="@+id/tv_car_brand"
+        />
+
+
+        <RatingBar
+                android:id="@+id/rb_rating_car"
+                style="@android:style/Widget.Material.RatingBar.Small"
+                android:layout_width="83dp"
+                android:layout_height="15dp"
+                android:focusable="false"
+                android:isIndicator="true"
+                android:max="5"
+                android:stepSize="0.2"
+                android:outlineAmbientShadowColor="@color/colorGreenLight"
+                android:progressBackgroundTint="@color/colorGrayLight"
+                android:progressTint="@color/colorGreenLight"
+                app:rate_value="@{cardetail.rating.average}"
+
+                android:secondaryProgressTint="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="@+id/tv_car_brand"
+                app:layout_constraintTop_toBottomOf="@+id/tv_car_brand"/>
+
+
+        <TextView
+                android:id="@+id/tv_trip_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+
+                app:review_count="@{cardetail.rating.count}"
+                android:text="TextView"
+                android:textColor="@color/colorGrayLight"
+                android:textSize="@dimen/text_size_review_count"
+                app:layout_constraintBottom_toBottomOf="@+id/rb_rating_car"
+                app:layout_constraintStart_toEndOf="@+id/rb_rating_car"
+        />
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="90dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="0.3dp"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right_ver"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_trip_count">
+
+
+            <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="@dimen/card_margin"
+                    app:price_value="@{cardetail.price}"
+                    android:gravity="start"
+                    android:textColor="@color/colorBlueDark"
+                    android:textSize="@dimen/text_size_price"
+                    android:textStyle="bold"/>
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="@dimen/card_margin"
+
+                    app:srcCompat="@drawable/icon_car"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+                android:text="Owner"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_owner" app:layout_constraintStart_toStartOf="@+id/gl_left_ver"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right_ver"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                android:layout_marginTop="32dp"/>
+        <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right_ver"
+                app:layout_constraintStart_toStartOf="@+id/tv_owner"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_owner" android:id="@+id/cardView2">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:id="@+id/iv_owner_picture"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        app:circ_imageUrl="@{cardetail.owner.picture}"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="16dp"
+                        app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="16dp"/>
+                <TextView
+                        android:text="@{cardetail.owner.name}"
+                        android:layout_width="117dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView"
+                        android:textColor="@color/colorBlueDark"
+                        app:layout_constraintStart_toEndOf="@+id/iv_owner_picture"
+                        android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="@+id/iv_owner_picture"/>
+                <RatingBar
+                        android:id="@+id/rb_rating"
+                        style="@android:style/Widget.Material.RatingBar.Small"
+                        android:layout_width="83dp"
+                        android:layout_height="15dp"
+                        android:focusable="false"
+                        android:isIndicator="true"
+                        android:max="5"
+                        android:stepSize="0.2"
+                        app:rate_value="@{cardetail.owner.rating.average}"
+                        android:outlineAmbientShadowColor="@color/colorGreenLight"
+                        android:progressBackgroundTint="@color/colorGrayLight"
+                        android:progressTint="@color/colorGreenLight"
+                        android:secondaryProgressTint="@color/colorPrimaryDark"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"
+                        app:layout_constraintStart_toStartOf="@+id/textView"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:rate_count="@{cardetail.owner.rating.average}"
+                        android:id="@+id/tv_rate_count"
+                        android:textColor="@color/colorBlueDark"
+                        app:layout_constraintStart_toEndOf="@+id/rb_rating"
+                        app:layout_constraintBottom_toBottomOf="@+id/rb_rating"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_reivew_count"
+                        app:review_value="@{cardetail.owner.rating.count}"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_rate_count"
+                        app:layout_constraintStart_toEndOf="@+id/tv_rate_count"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

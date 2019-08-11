@@ -23,7 +23,7 @@ class NetworkModule {
         .build()
 
     @Provides
-    fun providesOkHttp(httpLoggingInterceptor: HttpLoggingInterceptor,  requestInterceptor: Interceptor): OkHttpClient {
+    fun providesOkHttp(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
              .build()
