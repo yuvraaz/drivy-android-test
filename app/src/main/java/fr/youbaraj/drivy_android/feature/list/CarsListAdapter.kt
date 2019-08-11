@@ -5,15 +5,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
+ import android.widget.RatingBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
-import androidx.recyclerview.widget.RecyclerView
+ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.makeramen.roundedimageview.RoundedImageView
 import fr.youbaraj.drivy_android.R
-import fr.youbaraj.drivy_android.feature.detail.CarDetailActivity
+ import fr.youbaraj.drivy_android.feature.detail.DetailActivity
 import fr.youbaraj.drivy_android.feature.list.model.CarsDAO
 
 class CarsListAdapter(private val carsDataSet: List<CarsDAO>) :
@@ -44,7 +42,7 @@ class CarsListAdapter(private val carsDataSet: List<CarsDAO>) :
 
 
         holder.photo.setOnClickListener(View.OnClickListener {
-            val intent = Intent(context, CarDetailActivity::class.java).apply {
+            val intent = Intent(context, DetailActivity::class.java).apply {
                 putExtra("car", carsDataSet[position])
             }
             context.startActivity(intent)

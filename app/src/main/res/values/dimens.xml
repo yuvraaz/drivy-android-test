@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <dimen name="text_size_title">17dp</dimen>
+    <dimen name="text_size_title">17dp</dimen>
     <dimen name="text_size_price">17dp</dimen>
     <dimen name="card_padding">5dp</dimen>
     <dimen name="card_margin">5dp</dimen>
@@ -9,4 +9,7 @@
     <dimen name="text_size_model">17dp</dimen>
     <dimen name="text_size_review_count">13dp</dimen>
     <dimen name="text_size_price_detail">30dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

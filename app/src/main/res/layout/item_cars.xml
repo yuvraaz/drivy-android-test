@@ -20,6 +20,7 @@
             app:riv_border_color="@color/colorGreenBackground"
             app:riv_border_width="@dimen/image_border_width"
             app:riv_corner_radius="@dimen/corner_radious"
+            android:src="@drawable/car_dummy1"
             app:riv_mutate_background="true"
             app:riv_oval="false"
             app:layout_constraintStart_toStartOf="@+id/gl_left_vertical"

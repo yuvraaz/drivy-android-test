@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".feature.detail.CarDetailActivity"
-        xmlns:tools="http://schemas.android.com/tools">
+ <layout xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          tools:context=".feature.detail.DetailActivity"
+          xmlns:tools="http://schemas.android.com/tools">
 
-   <data>
+    <data>
 
-       <variable
-              name="cardetail"
-              type="fr.youbaraj.drivy_android.feature.list.model.CarsDAO"/>
-   </data>
+        <variable
+                name="cardetail"
+                type="fr.youbaraj.drivy_android.feature.list.model.CarsDAO"/>
+    </data>
 
-    <ScrollView
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:fitsSystemWindows="true"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:scrollbars="none"
-            android:layout_height="match_parent">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:fitsSystemWindows="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:toolbarId="@+id/toolbar"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="?attr/colorPrimary">
+            <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_car_picture"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{cardetail.pictureurl}"
+                    android:src="@drawable/car_dummy1"
+            />
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_width="match_parent"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="@+id/app_bar"
             android:layout_height="match_parent"
     >
 
@@ -35,16 +86,6 @@
                                                     app:layout_constraintGuide_begin="380dp"
                                                     android:orientation="vertical" android:layout_marginEnd="16dp"
                                                     app:layout_constraintEnd_toEndOf="parent"/>
-        <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/car_dummy"
-                android:id="@+id/iv_car_picture"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                app:imageUrl="@{cardetail.pictureurl}"
-
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
 
 
         <Button
@@ -61,10 +102,11 @@
                 android:text="@{cardetail.brand}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_car_brand" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/iv_car_picture"
+                android:id="@+id/tv_car_brand"
                 app:layout_constraintStart_toStartOf="@+id/gl_left_ver" android:textSize="@dimen/text_size_title"
-                android:textColor="@color/colorBlueDark"/>
+                android:textColor="@color/colorBlueDark"
+                android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
+        />
         <TextView
                 android:text="@{cardetail.model}"
                 android:layout_width="wrap_content"
@@ -142,7 +184,6 @@
 
         <TextView
                 android:text="Owner"
-
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_owner" app:layout_constraintStart_toStartOf="@+id/gl_left_ver"
@@ -175,7 +216,7 @@
                         android:text="@{cardetail.owner.name}"
                         android:layout_width="117dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView"
+                        android:id="@+id/textView1"
                         android:textColor="@color/colorBlueDark"
                         app:layout_constraintStart_toEndOf="@+id/iv_owner_picture"
                         android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="@+id/iv_owner_picture"/>
@@ -193,8 +234,8 @@
                         android:progressBackgroundTint="@color/colorGrayLight"
                         android:progressTint="@color/colorGreenLight"
                         android:secondaryProgressTint="@color/colorPrimaryDark"
-                        app:layout_constraintTop_toBottomOf="@+id/textView"
-                        app:layout_constraintStart_toStartOf="@+id/textView"/>
+                        app:layout_constraintTop_toBottomOf="@+id/textView1"
+                        app:layout_constraintStart_toStartOf="@+id/textView1"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -215,6 +256,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
